@@ -16,11 +16,11 @@ export function InputForm(props: React.PropsWithChildren<InputFormProps>) {
         <>
             {
                 props.titles.map(
-                    function (value) {
+                    function (value: any) {
                         data[value.title] = ""
                         return (
                             <div>
-                                <InputFormElement onKeyDown={(val) => { data[value.title] = val }} inputType={value.inputType} title={value.title} />
+                                <InputFormElement onKeyDown={(val: any) => { data[value.title] = val }} inputType={value.inputType} title={value.title} />
                             </div>
                         )
                     }
@@ -42,7 +42,7 @@ function InputFormElement(props: React.PropsWithChildren<InputFormElementProps>)
     return (
         <>
             <p>{props.title}</p>
-            <input onKeyDown={(value: any) => props.onKeyDown(inputRef.current?.value)} type={props.inputType} name="name" ref={inputRef} />
+            <input onKeyUp={(value: any) => props.onKeyDown(inputRef.current?.value)} type={props.inputType} name="name" ref={inputRef} />
         </>
     )
 }
