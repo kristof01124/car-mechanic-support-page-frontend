@@ -9,7 +9,7 @@ export function Homepage() {
             <p>
                 Itt az átlagos autószerelő-műhelyben a legfontosabb az átlagos vásárló lehető legnagyobb átlagos elégedettségi szintjét elérni, ezért hoztuk létre ezt az átlagos weboldalt, ahol az átlagos felhasználók a technólogia segítségével tudnak kommunikálni az átlagos autószerelőkkel. Átlagosan!
             </p>
-            <button>
+            <button className="xxl">
                 Bejelentkezés
             </button>
         </PageLayout>

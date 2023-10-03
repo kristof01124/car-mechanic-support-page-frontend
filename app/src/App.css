@@ -27,14 +27,37 @@
 button {
     width: fit-content;
     align-self: center;
-    padding: 1em;
+    padding: 0.5em 1em 0.5em 1em;
     border-radius: 1em;
     background-color: blue;
     border: 0;
     color: white;
-    font-size: x-large;
     margin: auto;
-    box-shadow: 0 9px #999;
+    box-shadow: 0 0.4em #999;
+}
+
+button.xxl {
+    font-size: x-large;
+}
+
+.input_form_label {
+    align-self: center;
+}
+
+.input_form_input {
+    border: 0;
+    border-radius: 1em;
+    height: 2.5em;
+}
+
+.input_form_label_body {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_form_submit_buttonn {
+    align-self: center;
+    margin-top: 1em;
 }
 
 button:hover {
@@ -42,6 +65,6 @@ button:hover {
 }
 
 button:active {
-    box-shadow: 0 5px #666;
+    box-shadow: 0 0.2em #666;
     transform: translateY(4px);
 }
