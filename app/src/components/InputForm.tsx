@@ -1,11 +1,14 @@
 import { Children, useRef } from "react";
+import "./InputForm.css"
 
 interface InputFormDataProps {
     title: string,
-    inputType: string
+    inputType: string,
+    id: string
 }
 
 interface InputFormProps {
+    title: string,
     titles: InputFormDataProps[]
     onSubmit: (values: Object) => any
 }
@@ -14,10 +17,11 @@ export function InputForm(props: React.PropsWithChildren<InputFormProps>) {
     var data: { [key: string]: any } = {};
     return (
         <div className="input_form_label_body">
+            <h1 className="input_form_title">{props.title}</h1>
             {
                 props.titles.map(
                     function (value: any) {
-                        data[value.title] = ""
+                        data[value.id] = ""
                         return (
                             <InputFormElement onKeyDown={(val: any) => { data[value.title] = val }} inputType={value.inputType} title={value.title} />
                         )

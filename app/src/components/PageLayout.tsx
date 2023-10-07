@@ -1,3 +1,5 @@
+import "./PageLayout.css"
+
 interface PageLayoutProps {
     title: String
 }

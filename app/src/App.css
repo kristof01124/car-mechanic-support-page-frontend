@@ -1,29 +1,3 @@
-.pageLayoutHeader {
-    background-color: blue;
-    padding: 0.4em;
-    margin: 0;
-    text-align: center;
-    color: white;
-    border-radius: 0em 0em 0.5em 0.5em;
-    font-size: x-large;
-}
-
-.pageLayoutBody {
-    background-color: burlywood;
-    margin: 1em;
-    border-radius: 1em;
-    text-align: center;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.pageLayout {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
 button {
     width: fit-content;
     align-self: center;
@@ -38,26 +12,6 @@ button {
 
 button.xxl {
     font-size: x-large;
-}
-
-.input_form_label {
-    align-self: center;
-}
-
-.input_form_input {
-    border: 0;
-    border-radius: 1em;
-    height: 2.5em;
-}
-
-.input_form_label_body {
-    display: flex;
-    flex-direction: column;
-}
-
-.input_form_submit_buttonn {
-    align-self: center;
-    margin-top: 1em;
 }
 
 button:hover {
