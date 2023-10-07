@@ -1,5 +1,7 @@
 import { Children, useRef } from "react";
 import "./InputForm.css"
+import { MyDropdownButton } from "./MyDropdownButton";
+import { getValuesForDropdownMenu } from "../Controller";
 
 interface InputFormDataProps {
     title: string,
@@ -23,7 +25,7 @@ export function InputForm(props: React.PropsWithChildren<InputFormProps>) {
                     function (value: any) {
                         data[value.id] = ""
                         return (
-                            <InputFormElement onKeyDown={(val: any) => { data[value.title] = val }} inputType={value.inputType} title={value.title} />
+                            <InputFormElement id={value.id} onKeyDown={(val: any) => { data[value.id] = val }} inputType={value.inputType} title={value.title} />
                         )
                     }
                 )
@@ -38,10 +40,28 @@ interface InputFormElementProps {
     title: string,
     inputType: string,
     onKeyDown: (value: any) => any;
+    id: string
 };
 
 function InputFormElement(props: React.PropsWithChildren<InputFormElementProps>) {
+    const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
     const inputRef = useRef<HTMLInputElement | null>(null);
+    if (props.inputType == "dropdown") {
+        return (
+            <>
+                <p className="input_form_label">{props.title}</p>
+                <MyDropdownButton id={props.id} onClick={props.onKeyDown} getListOfElements={getValuesForDropdownMenu} />
+            </>
+        )
+    }
+    if (props.inputType == "textarea") {
+        return (
+            <>
+                <p className="input_form_label">{props.title}</p>
+                <textarea rows={10} onKeyUp={(value: any) => props.onKeyDown(textAreaRef.current?.value)} ref={textAreaRef} />
+            </>
+        )
+    }
     return (
         <>
             <p className="input_form_label">{props.title}</p>
