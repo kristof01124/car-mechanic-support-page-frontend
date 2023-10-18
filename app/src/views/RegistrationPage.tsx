@@ -37,5 +37,5 @@ export function RegistrationPage() {
                 <a>Van már átlagos fiókod? Jelentkezz be!</a>
             </InputForm>
         </PageLayout>
-    )
+    ) // API_CALL: register new user
 }

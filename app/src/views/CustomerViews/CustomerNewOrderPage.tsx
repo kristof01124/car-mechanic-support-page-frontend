@@ -1,6 +1,8 @@
 import { InputForm } from "../../components/InputForm";
 import { CustomerPageLayout } from "../../components/CustomerPageCompnents/CustomerPageLayout";
-
+interface CustomerNewOrderPageInterface {
+    userID: string
+}
 
 export function CustomerNewOrderPage() {
     return (
@@ -28,7 +30,10 @@ export function CustomerNewOrderPage() {
                         id: "description"
                     }
                 ]
-            } onSubmit={(values) => alert(JSON.stringify(values))}>
+            } onSubmit={(values) => alert(JSON.stringify(values))}> 
+            {
+                // API_CALLL: Create new order for a given userID
+            }
             </InputForm>
         </CustomerPageLayout>
     )

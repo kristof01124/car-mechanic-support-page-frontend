@@ -21,5 +21,5 @@ export function LoginPage() {
                 <a>Nincs még fiókod? Legyél átlagos! Regisztrálj!</a> 
             </InputForm>
         </PageLayout>
-    ) // TODO: Setup routing for the link
+    ) // API_CALL: Check login for user data
 }
