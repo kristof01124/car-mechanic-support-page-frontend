@@ -17,11 +17,6 @@ export function CustomerPageLayout(props: React.PropsWithChildren<{}>) {
                         onPressed: (id) => alert(id)
                     },
                     {
-                        title: "Új rendelés",
-                        id: "new_order",
-                        onPressed: (id) => alert(id)
-                    },
-                    {
                         title: "Fiók",
                         id: "profile",
                         onPressed: (id) => alert(id)

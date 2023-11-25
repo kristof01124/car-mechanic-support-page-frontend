@@ -1,6 +1,5 @@
 import { PageLayout } from "./components/PageLayout";
 import './App.css'
-import { Homepage } from "./views/Homepage";
 import { InputForm } from "./components/InputForm";
 import { Title } from "@mantine/core";
 import { LoginPage } from "./views/LoginPage";
