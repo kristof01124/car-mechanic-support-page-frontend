@@ -8,7 +8,7 @@ export interface CreateCarDTO {
     serial_number: string
 }
 
-export interface GetCarDTO {
+export interface GetCarDTO extends CreateCarDTO {
     relatedOrders: GetOrderDTO[]
     car_id: number,
 }

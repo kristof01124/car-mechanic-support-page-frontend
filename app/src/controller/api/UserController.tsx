@@ -11,9 +11,16 @@ export interface CreateUserDTO {
     user_role?: string
 }
 
-export interface GetUserDto extends CreateUserDTO {
-    user_id?: number,
-    ownedCars?: GetCarDTO[]
+export interface GetUserDto {
+    first_name: string,
+    last_name: string,
+    date_of_birth: string,
+    phone_number: string,
+    email_address: string,
+    password: string,
+    user_role: string
+    user_id: number,
+    ownedCars: GetCarDTO[]
 }
 
 export class UserController {

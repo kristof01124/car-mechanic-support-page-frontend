@@ -1,15 +1,15 @@
 import { deleteBody, getBody, patchBody, postBody, url } from "./constants"
 
 export interface CreateFeedbackDTO {
-    title?: string,
-    start_time?: string,
-    end_time?: string,
-    comment?: string,
-    is_successful?: boolean
+    title: string,
+    start_time: string,
+    end_time: string,
+    comment: string,
+    is_successful: boolean
 }
 
 export interface GetFeedbackDTO extends CreateFeedbackDTO {
-    feedback_id?: number
+    feedback_id: number
 }
 
 export class FeedbackController {

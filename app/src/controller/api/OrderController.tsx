@@ -15,7 +15,7 @@ export interface GetOrderDTO extends CreateOrderDTO {
 
 export class OrderController {
     // GET methods
-    static async getOrderById(id: string): Promise<GetFeedbackDTO> {
+    static async getOrderById(id: string): Promise<GetOrderDTO> {
         return (await fetch(url + "/Orders/" + id, getBody)).json()
     }
 
