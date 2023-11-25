@@ -1,10 +1,10 @@
-import { CustomerPageLayout } from "../../components/CustomerPageCompnents/CustomerPageLayout";
-import { InputForm } from "../../components/InputForm";
-interface CustomerNewOrderPageInterface {
-    userID: string
+import { CustomerPageLayout } from "../components/CustomerPageCompnents/CustomerPageLayout";
+import { InputForm } from "../components/InputForm";
+interface NewOrderInterface {
+    userID: number
 }
 
-export function CustomerNewOrderPage() {
+export function NewOrderPage() {
     return (
         <CustomerPageLayout>
             <InputForm title="Új rendelés" inputFormElements={

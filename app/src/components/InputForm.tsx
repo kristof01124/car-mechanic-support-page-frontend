@@ -6,6 +6,7 @@ interface InputFormDataProps {
     title: string,
     inputType: string,
     id: string,
+    initalValue?: any,
     dropDownElements?: MyDropdownButtonElementInterface[]
 }
 
@@ -24,7 +25,7 @@ export function InputForm(props: React.PropsWithChildren<InputFormProps>) {
                 props.inputFormElements.map(
                     function (value: InputFormDataProps) {
                         return (
-                            <InputFormElement id={value.id} onKeyDown={(val: any) => { data[value.id] = val }} inputType={value.inputType} title={value.title} dropDownElements={value.dropDownElements} />
+                            <InputFormElement initialValue={value.initalValue} id={value.id} onKeyDown={(val: any) => { data[value.id] = val }} inputType={value.inputType} title={value.title} dropDownElements={value.dropDownElements} />
                         )
                     }
                 )
@@ -42,6 +43,7 @@ interface InputFormElementProps {
     inputType: string,
     onKeyDown: (value: any) => any;
     id: string,
+    initialValue?: any,
     dropDownElements?: MyDropdownButtonElementInterface[]
 };
 

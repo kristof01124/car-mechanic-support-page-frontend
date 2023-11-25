@@ -1,8 +1,15 @@
-import { GetFeedbackDTO } from "../controller/api/FeedbackController"
 import "./OrderFeedback.css"
 
+interface FeedbackData {
+    title: string,
+    start_time: string,
+    end_time: string,
+    comment: string,
+    is_successful: boolean
+}
+
 interface OrderFeedbackInterface {
-    feedback: GetFeedbackDTO
+    feedback: FeedbackData
 }
 export function OrderFeedback(props: OrderFeedbackInterface) {
     return (

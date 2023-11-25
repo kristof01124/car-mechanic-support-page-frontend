@@ -15,7 +15,7 @@ interface ObjectEditorItemInterface {
     inputType: string,
     isChangable: boolean,
     value: any
-    valueConverter: (object: any) => JsxExpression
+    valueConverter?: (object: any) => any
     dropDownElements?: MyDropdownButtonElementInterface[]
 }
 
@@ -31,7 +31,7 @@ export function ObjectEditor(props: ObjectEditorInterface) {
                         return (
                             <div className="ObjectEditorItemBody">
                                 <p className="ObjectEditorLargeItemTitle">{value.title}</p>
-                                <p className="ObjectEditorLargeItemValue">{value.valueConverter(value.value)}</p>
+                                <p className="ObjectEditorLargeItemValue">{value.valueConverter?.(value.value) ?? value.value.toString()}</p>
                             </div>
                         )
                     }
@@ -39,7 +39,7 @@ export function ObjectEditor(props: ObjectEditorInterface) {
                         return (
                             <div className="ObjectEditorItemBody">
                                 <span className="ObjectEditorItemTitle">{value.title}</span>
-                                <span className="ObjectEditorItemValue">{value.valueConverter(value.value)}</span>
+                                <span className="ObjectEditorItemValue">{value.valueConverter?.(value.value) ?? value.value.toString()}</span>
                             </div>
                         )
                     }
@@ -56,7 +56,8 @@ export function ObjectEditor(props: ObjectEditorInterface) {
                         title: parameter.title,
                         inputType: parameter.inputType,
                         id: parameter.id,
-                        dropDownElements: parameter.dropDownElements
+                        dropDownElements: parameter.dropDownElements,
+                        initalValue: parameter.value
                     }
                 })} />
             </>

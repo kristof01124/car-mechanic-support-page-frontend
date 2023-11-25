@@ -8,6 +8,7 @@ interface MyDropdownButtonInterface {
     id: string,
     onClick: (id: string) => any,
     listOfElements?: MyDropdownButtonElementInterface[]
+    initialValue?: any
 }
 
 export interface MyDropdownButtonElementInterface {
@@ -18,7 +19,7 @@ export interface MyDropdownButtonElementInterface {
 export function MyDropdownButton(props: MyDropdownButtonInterface) {
     var [label, setLabel] = React.useState("");
     return (
-        <Dropdown className="test" label={label} dismissOnClick={true}>
+        <Dropdown value={props.initialValue} className="test" label={label} dismissOnClick={true}>
             {
                 props.listOfElements?.map((value) => (
                     <DropdownItem onClick={
