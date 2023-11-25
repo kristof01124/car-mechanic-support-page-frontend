@@ -1,13 +1,13 @@
-import { CustomerPageLayout } from "../components/CustomerPageCompnents/CustomerPageLayout";
-import { InputForm } from "../components/InputForm";
-interface NewOrderInterface {
-    userID: number
+import { InputForm } from "../../components/InputForm";
+import { CustomerPageLayout } from "../../components/CustomerPageCompnents/CustomerPageLayout";
+interface CustomerNewOrderPageInterface {
+    userID: string
 }
 
-export function NewOrderPage() {
+export function CustomerNewOrderPage() {
     return (
         <CustomerPageLayout>
-            <InputForm title="Új rendelés" inputFormElements={
+            <InputForm title="Új rendelés" titles={
                 [
                     {
                         title: "Autó",
@@ -30,10 +30,10 @@ export function NewOrderPage() {
                         id: "description"
                     }
                 ]
-            } onSubmit={(values) => alert(JSON.stringify(values))}>
-                {
-                    // API_CALLL: Create new order for a given userID
-                }
+            } onSubmit={(values) => alert(JSON.stringify(values))}> 
+            {
+                // API_CALLL: Create new order for a given userID
+            }
             </InputForm>
         </CustomerPageLayout>
     )

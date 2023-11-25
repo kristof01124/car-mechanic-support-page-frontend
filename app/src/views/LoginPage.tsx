@@ -4,7 +4,7 @@ import { PageLayout } from "../components/PageLayout";
 export function LoginPage() {
     return (
         <PageLayout title={"Egy átlagos autószerelő-műhely átlagos weboldala"}>
-            <InputForm title="Bejelentkezés" onSubmit={(values) => alert(JSON.stringify(values))} inputFormElements={
+            <InputForm title="Bejelentkezés" onSubmit={(values) => alert(JSON.stringify(values))} titles={
                 [
                     {
                         title: "Felhasználónév",
@@ -18,7 +18,7 @@ export function LoginPage() {
                     }
                 ]
             }>
-                <a>Nincs még fiókod? Legyél átlagos! Regisztrálj!</a>
+                <a>Nincs még fiókod? Legyél átlagos! Regisztrálj!</a> 
             </InputForm>
         </PageLayout>
     ) // API_CALL: Check login for user data

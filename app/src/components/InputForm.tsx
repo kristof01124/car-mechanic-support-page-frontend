@@ -1,18 +1,17 @@
 import { Children, useRef } from "react";
 import "./InputForm.css"
-import { MyDropdownButton, MyDropdownButtonElementInterface } from "./MyDropdownButton";
+import { MyDropdownButton } from "./MyDropdownButton";
+import { getValuesForDropdownMenu } from "../Controller";
 
 interface InputFormDataProps {
     title: string,
     inputType: string,
-    id: string,
-    initalValue?: any,
-    dropDownElements?: MyDropdownButtonElementInterface[]
+    id: string
 }
 
 interface InputFormProps {
     title: string,
-    inputFormElements: InputFormDataProps[]
+    titles: InputFormDataProps[]
     onSubmit: (values: Object) => any
 }
 
@@ -22,10 +21,11 @@ export function InputForm(props: React.PropsWithChildren<InputFormProps>) {
         <div className="input_form_label_body">
             <h1 className="input_form_title">{props.title}</h1>
             {
-                props.inputFormElements.map(
-                    function (value: InputFormDataProps) {
+                props.titles.map(
+                    function (value: any) {
+                        data[value.id] = ""
                         return (
-                            <InputFormElement initialValue={value.initalValue} id={value.id} onKeyDown={(val: any) => { data[value.id] = val }} inputType={value.inputType} title={value.title} dropDownElements={value.dropDownElements} />
+                            <InputFormElement id={value.id} onKeyDown={(val: any) => { data[value.id] = val }} inputType={value.inputType} title={value.title} />
                         )
                     }
                 )
@@ -36,15 +36,11 @@ export function InputForm(props: React.PropsWithChildren<InputFormProps>) {
     )
 }
 
-
-
 interface InputFormElementProps {
     title: string,
     inputType: string,
     onKeyDown: (value: any) => any;
-    id: string,
-    initialValue?: any,
-    dropDownElements?: MyDropdownButtonElementInterface[]
+    id: string
 };
 
 function InputFormElement(props: React.PropsWithChildren<InputFormElementProps>) {
@@ -54,7 +50,7 @@ function InputFormElement(props: React.PropsWithChildren<InputFormElementProps>)
         return (
             <>
                 <p className="input_form_label">{props.title}</p>
-                <MyDropdownButton id={props.id} onClick={props.onKeyDown} listOfElements={props.dropDownElements} />
+                <MyDropdownButton id={props.id} onClick={props.onKeyDown} getListOfElements={getValuesForDropdownMenu} />
             </>
         )
     }
@@ -62,14 +58,14 @@ function InputFormElement(props: React.PropsWithChildren<InputFormElementProps>)
         return (
             <>
                 <p className="input_form_label">{props.title}</p>
-                <textarea rows={10} onChange={(value: any) => props.onKeyDown(textAreaRef.current?.value)} ref={textAreaRef} />
+                <textarea rows={10} onKeyUp={(value: any) => props.onKeyDown(textAreaRef.current?.value)} ref={textAreaRef} />
             </>
         )
     }
     return (
         <>
             <p className="input_form_label">{props.title}</p>
-            <input className="input_form_input" onChange={(value: any) => props.onKeyDown(inputRef.current?.value)} type={props.inputType} name="name" ref={inputRef} />
+            <input className="input_form_input" onKeyUp={(value: any) => props.onKeyDown(inputRef.current?.value)} type={props.inputType} name="name" ref={inputRef} />
         </>
     )
 }
