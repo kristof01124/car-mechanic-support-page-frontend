@@ -1,23 +1,27 @@
 import { PageLayout } from "./components/PageLayout";
 import './App.css'
-import { Homepage } from "./views/Homepage";
 import { InputForm } from "./components/InputForm";
 import { Title } from "@mantine/core";
+import { LoginPage } from "./views/LoginPage";
+import { Homepage } from "./views/Homepage";
+import { NewOrderPage } from "./views/NewOrderPage";
+import { OrdersPage } from "./views/OrdersPage";
+import { NewCarPage } from "./views/NewCarPage";
+import { CarPage } from "./views/CarPage";
+import { OrderPage } from "./views/OrderPage";
+import { UserPage } from "./views/UserPage";
 
 export const App = () => {
   return (
-    <InputForm title="Bejelentkezés" titles={
-      [{
-        title: "Felhasználónév",
-        id: "username",
-        inputType: "text",
-      },
+    <UserPage userData={
       {
-        title: "Jelszó",
-        id: "password",
-        inputType: "password"
+        password: "alma",
+        email: "kristof01124@gmail.com",
+        firstName: "Kristóf",
+        lastName: "Tóth",
+        userRole: "Mechanic",
+        dateOfBirth: "2023-11-11"
       }
-      ]
-    } onSubmit={(values) => alert(JSON.stringify(values))} />
-  );
+    } />
+  )
 };
