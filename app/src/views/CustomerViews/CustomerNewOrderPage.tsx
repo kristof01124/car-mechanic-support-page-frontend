@@ -1,5 +1,5 @@
-import { InputForm } from "../../components/InputForm";
 import { CustomerPageLayout } from "../../components/CustomerPageCompnents/CustomerPageLayout";
+import { InputForm } from "../../components/InputForm";
 interface CustomerNewOrderPageInterface {
     userID: string
 }
@@ -7,7 +7,7 @@ interface CustomerNewOrderPageInterface {
 export function CustomerNewOrderPage() {
     return (
         <CustomerPageLayout>
-            <InputForm title="Új rendelés" titles={
+            <InputForm title="Új rendelés" inputFormElements={
                 [
                     {
                         title: "Autó",
@@ -30,10 +30,10 @@ export function CustomerNewOrderPage() {
                         id: "description"
                     }
                 ]
-            } onSubmit={(values) => alert(JSON.stringify(values))}> 
-            {
-                // API_CALLL: Create new order for a given userID
-            }
+            } onSubmit={(values) => alert(JSON.stringify(values))}>
+                {
+                    // API_CALLL: Create new order for a given userID
+                }
             </InputForm>
         </CustomerPageLayout>
     )

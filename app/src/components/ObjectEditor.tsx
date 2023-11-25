@@ -1,0 +1,67 @@
+import { JsxExpression } from "typescript"
+import { MyDropdownButtonElementInterface } from "./MyDropdownButton"
+import { useState } from "react"
+import { InputForm } from "./InputForm"
+
+interface ObjectEditorInterface {
+    title: string,
+    parameters: ObjectEditorItemInterface[]
+    onChange: (obj: any) => boolean
+}
+
+interface ObjectEditorItemInterface {
+    id: string,
+    title: string,
+    inputType: string,
+    isChangable: boolean,
+    value: any
+    valueConverter: (object: any) => JsxExpression
+    dropDownElements?: MyDropdownButtonElementInterface[]
+}
+
+export function ObjectEditor(props: ObjectEditorInterface) {
+    const [editing, setEditing] = useState(true)
+    if (editing) {
+        return (
+            <>
+                <h1 className="ObjectEditorTitle">{props.title}</h1>
+                <button className="ObjecEditorModifyButton" onClick={() => setEditing(false)}>Módosít</button>
+                {props.parameters.map((value => {
+                    if (value.inputType == "textarea") {
+                        return (
+                            <div className="ObjectEditorItemBody">
+                                <p className="ObjectEditorLargeItemTitle">{value.title}</p>
+                                <p className="ObjectEditorLargeItemValue">{value.valueConverter(value.value)}</p>
+                            </div>
+                        )
+                    }
+                    else {
+                        return (
+                            <div className="ObjectEditorItemBody">
+                                <span className="ObjectEditorItemTitle">{value.title}</span>
+                                <span className="ObjectEditorItemValue">{value.valueConverter(value.value)}</span>
+                            </div>
+                        )
+                    }
+                }))}
+            </>
+        )
+    }
+    else {
+        return (
+            <>
+                <button className="ObjecEditorBackButton" onClick={() => setEditing(true)}>Vissza</button>
+                <InputForm title={props.title} onSubmit={props.onChange} inputFormElements={props.parameters.filter((parameter) => parameter.isChangable).map((parameter) => {
+                    return {
+                        title: parameter.title,
+                        inputType: parameter.inputType,
+                        id: parameter.id,
+                        dropDownElements: parameter.dropDownElements
+                    }
+                })} />
+            </>
+        )
+    }
+
+}
+

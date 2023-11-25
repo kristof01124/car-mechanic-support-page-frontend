@@ -5,7 +5,7 @@ import { PageLayout } from "../components/PageLayout";
 export function RegistrationPage() {
     return (
         <PageLayout title={"Egy átlagos autószerelő-műhely átlagos weboldala"}>
-            <InputForm title="Regisztráció" onSubmit={(values) => alert(JSON.stringify(values))} titles={
+            <InputForm title="Regisztráció" onSubmit={(values) => alert(JSON.stringify(values))} inputFormElements={
                 [
                     {
                         title: "Felhasználónév",
