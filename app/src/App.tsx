@@ -10,18 +10,24 @@ import { NewCarPage } from "./views/NewCarPage";
 import { CarPage } from "./views/CarPage";
 import { OrderPage } from "./views/OrderPage";
 import { UserPage } from "./views/UserPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RegistrationPage } from "./views/RegistrationPage";
 
 export const App = () => {
   return (
-    <UserPage userData={
-      {
-        password: "alma",
-        email: "kristof01124@gmail.com",
-        firstName: "Kristóf",
-        lastName: "Tóth",
-        userRole: "Mechanic",
-        dateOfBirth: "2023-11-11"
-      }
-    } />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/orders/:userID" element={<RegistrationPage />} />
+        <Route path="/order/:id" element={<RegistrationPage />} />
+        <Route path="/createOrder" element={<RegistrationPage />} />
+        <Route path="/cars" element={<RegistrationPage />} />
+        <Route path="/car/:id" element={<RegistrationPage />} />
+        <Route path="/createCar" element={<RegistrationPage />} />
+        <Route path="/user/:id" element={<RegistrationPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 };

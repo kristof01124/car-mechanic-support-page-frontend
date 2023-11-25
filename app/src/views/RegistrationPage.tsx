@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { InputForm } from "../components/InputForm";
 import { PageLayout } from "../components/PageLayout";
 
@@ -34,7 +35,7 @@ export function RegistrationPage() {
                     }
                 ]
             }>
-                <a>Van már átlagos fiókod? Jelentkezz be!</a>
+                <a>Van már átlagos fiókod? <Link to={"/login"}>Jelentkezz be!</Link></a>
             </InputForm>
         </PageLayout>
     ) // API_CALL: register new user

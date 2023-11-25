@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { InputForm } from "../components/InputForm";
 import { PageLayout } from "../components/PageLayout";
 
@@ -18,7 +19,7 @@ export function LoginPage() {
                     }
                 ]
             }>
-                <a>Nincs még fiókod? Legyél átlagos! Regisztrálj!</a>
+                <a>Nincs még fiókod? Legyél átlagos! <Link to={"/register"}>Regisztrálj!</Link></a>
             </InputForm>
         </PageLayout>
     ) // API_CALL: Check login for user data
