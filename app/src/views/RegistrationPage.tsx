@@ -1,17 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { InputForm } from "../components/InputForm";
 import { PageLayout } from "../components/PageLayout";
+import { CreateUserDTO, UserController } from "../controller/api/UserController";
+import { setCurrentUser } from "../controller/session/session";
 
+async function onSubmit(values: CreateUserDTO, navigate: NavigateFunction) {
+    values.user_role = "CUSTOMER"
+    setCurrentUser(await UserController.createNewUser(values))
+    navigate("/orders")
+}
 
 export function RegistrationPage() {
+    var navigate = useNavigate()
     return (
         <PageLayout title={"Egy átlagos autószerelő-műhely átlagos weboldala"}>
-            <InputForm title="Regisztráció" onSubmit={(values) => alert(JSON.stringify(values))} inputFormElements={
+            <InputForm title="Regisztráció" onSubmit={(values) => onSubmit(values as CreateUserDTO, navigate)} inputFormElements={
                 [
                     {
-                        title: "Felhasználónév",
-                        id: "username",
-                        inputType: "text"
+                        title: "E-mail cím",
+                        id: "email_address",
+                        inputType: "e-mail"
                     },
                     {
                         title: "Jelszó",
@@ -24,14 +32,24 @@ export function RegistrationPage() {
                         inputType: "password"
                     },
                     {
-                        title: "E-mail cím",
-                        id: "email",
-                        inputType: "e-mail"
+                        title: "Születési dátum",
+                        id: "date_of_birth",
+                        inputType: "date"
                     },
                     {
-                        title: "Születési dátum",
-                        id: "birthdate",
-                        inputType: "date"
+                        title: "Családnév",
+                        id: "last_name",
+                        inputType: "text"
+                    },
+                    {
+                        title: "Utónév",
+                        id: "first_name",
+                        inputType: "text"
+                    },
+                    {
+                        title: "Telefonszám",
+                        id: "phone_number",
+                        inputType: "text"
                     }
                 ]
             }>

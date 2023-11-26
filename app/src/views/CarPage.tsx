@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom"
 import { CustomerPageLayout } from "../components/CustomerPageCompnents/CustomerPageLayout"
 import { ObjectEditor } from "../components/ObjectEditor"
+import { CarController } from "../controller/api/CarController"
 
 interface CarPageInterface {
+    carId: string
     carData: CarData,
 }
 
@@ -12,10 +15,20 @@ interface CarData {
     serialNumber: string
 }
 
+async function onChange(value: CarData, carId: string) {
+    await CarController.modifyCar(carId, {
+        brand: value.brand,
+        serial_number: value.serialNumber,
+        license_plate: value.licensePlate,
+        type: value.type
+    })
+    window.location.reload();
+}
+
 export function CarPage(props: CarPageInterface) {
     return (
         <CustomerPageLayout>
-            <ObjectEditor title="Autó adatainak szerkesztése" onChange={(obj: any) => { alert(JSON.stringify(obj)); return true }} parameters={[
+            <ObjectEditor title="Autó adatainak szerkesztése" onChange={(obj: any) => { onChange(obj, props.carId); }} parameters={[
                 {
                     id: "brand",
                     title: "Márka",

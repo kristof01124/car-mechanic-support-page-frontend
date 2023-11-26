@@ -1,6 +1,14 @@
 import { deleteBody, getBody, patchBody, postBody, url } from "./constants"
 
 export interface CreateFeedbackDTO {
+    title: string,
+    start_time: string | null,
+    end_time: string | null,
+    comment: string,
+    is_successful: boolean
+}
+
+export interface PatchFeedbackDTO {
     title?: string,
     start_time?: string,
     end_time?: string,
@@ -9,7 +17,7 @@ export interface CreateFeedbackDTO {
 }
 
 export interface GetFeedbackDTO extends CreateFeedbackDTO {
-    feedback_id?: number
+    feedback_id: number
 }
 
 export class FeedbackController {
@@ -25,8 +33,8 @@ export class FeedbackController {
 
 
     // POST methods
-    static async createNewFeedback(body: CreateFeedbackDTO) {
-        return (await fetch(url + "/Feedbacks/", {
+    static async createNewFeedback(orderId: string, body: CreateFeedbackDTO) {
+        return (await fetch(url + "/Orders/" + orderId + "/Feedbacks", {
             ...postBody,
             body: JSON.stringify(body)
         })
@@ -34,12 +42,12 @@ export class FeedbackController {
     }
 
     // PATCH methods
-    static async modifyFeedback(id: string, body: CreateFeedbackDTO) {
-        return (await fetch(url + "/Feedbacks/" + id, {
+    static async modifyFeedback(id: string, body: PatchFeedbackDTO) {
+        return await (await fetch(url + "/Feedbacks/" + id, {
             ...patchBody,
             body: JSON.stringify(body)
         })
-        )
+        ).json()
     }
 
     // DELETE methods
