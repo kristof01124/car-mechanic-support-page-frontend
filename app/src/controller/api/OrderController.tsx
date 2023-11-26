@@ -1,15 +1,22 @@
-import { GetFeedbackDTO } from "./FeedbackController";
+import { Path } from "react-router-dom";
+import { CreateFeedbackDTO, GetFeedbackDTO } from "./FeedbackController";
 import { patchBody, postBody, deleteBody, getBody, url } from "./constants"
 
 
 export interface CreateOrderDTO {
-    relatedFeedback: GetFeedbackDTO,
     severity: string,
     approximate_position: string,
     description: string
 }
 
+export interface PatchOrderDTO {
+    severity?: string,
+    approximate_position?: string,
+    description?: string
+}
+
 export interface GetOrderDTO extends CreateOrderDTO {
+    relatedFeedback: GetFeedbackDTO,
     order_id: number
 }
 
@@ -26,21 +33,21 @@ export class OrderController {
 
 
     // POST methods
-    static async createNewOrder(body: CreateOrderDTO) {
-        return (await fetch(url + "/Orders/", {
+    static async createNewOrder(carId: string, body: CreateOrderDTO) {
+        return await (await fetch(url + "/Cars/" + carId + "/Orders", {
             ...postBody,
             body: JSON.stringify(body)
         })
-        )
+        ).json()
     }
 
     // PATCH methods
-    static async modifyOrder(id: string, body: CreateOrderDTO) {
-        return (await fetch(url + "/Orders/" + id, {
+    static async modifyOrder(id: string, body: PatchOrderDTO) {
+        return await (await fetch(url + "/Orders/" + id, {
             ...patchBody,
             body: JSON.stringify(body)
         })
-        )
+        ).json()
     }
 
     // DELETE methods

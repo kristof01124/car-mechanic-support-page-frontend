@@ -8,6 +8,13 @@ export interface CreateCarDTO {
     serial_number: string
 }
 
+export interface PatchCarDTO {
+    brand?: string,
+    type?: string,
+    license_plate?: string,
+    serial_number?: string
+}
+
 export interface GetCarDTO extends CreateCarDTO {
     relatedOrders: GetOrderDTO[]
     car_id: number,
@@ -24,18 +31,21 @@ export class CarController {
         return (await fetch(url + "/Cars", getBody)).json()
     }
 
+    static async getCarByLicensePlate(licensePlate: string): Promise<GetCarDTO> {
+        return (await fetch(url + "/Cars/license_plate/" + licensePlate)).json()
+    }
 
     // POST methods
-    static async createNewCar(body: CreateCarDTO) {
-        return (await fetch(url + "/Cars/", {
+    static async createNewCar(userId: string, body: CreateCarDTO) {
+        return await (await fetch(url + "/Users/" + userId + "/Cars", {
             ...postBody,
             body: JSON.stringify(body)
         })
-        )
+        ).json()
     }
 
     // PATCH methods
-    static async modifyCar(id: string, body: CreateCarDTO) {
+    static async modifyCar(id: string, body: PatchCarDTO) {
         return (await fetch(url + "/Cars/" + id, {
             ...patchBody,
             body: JSON.stringify(body)
