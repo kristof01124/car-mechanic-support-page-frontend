@@ -4,7 +4,8 @@ import { InputForm } from "../components/InputForm";
 import { CreateOrderDTO, GetOrderDTO, OrderController } from "../controller/api/OrderController";
 import { FeedbackController } from "../controller/api/FeedbackController";
 import { positionDropdownItems, severityDropdownItems } from "../controller/enums";
-import { getCurrentUser } from "../controller/session/session";
+import { getCurrentUser, setCurrentUser } from "../controller/session/session";
+import { UserController } from "../controller/api/UserController";
 interface NewOrderInterface {
     userID: number
 }
@@ -26,6 +27,7 @@ async function onSubmit(data: OrderData, navigate: NavigateFunction) {
         alert(order.message)
         return
     }
+    setCurrentUser(await UserController.getUserById(getCurrentUser().user_id.toString()))
     navigate("/order/" + order.order_id)
 }
 

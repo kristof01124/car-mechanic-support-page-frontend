@@ -9,17 +9,17 @@ interface NewCarInterface {
 }
 
 async function onSubmit(userId: string, value: CreateCarDTO, navigate: NavigateFunction) {
+    if (value.brand == undefined
+        || value.license_plate == undefined
+        || value.serial_number == undefined
+        || value.type == undefined) {
+        alert("Please fill in all the values!")
+        return;
+    }
     var data: any = await CarController.createNewCar(userId, value)
     if (data.error != undefined) {
         alert(data.message)
         return
-    }
-    if (data.brand == undefined
-        || data.license_plate == undefined
-        || data.serial_number == undefined
-        || data.type == undefined) {
-        alert("Please fill in all the values!")
-        return;
     }
     setCurrentUser(await UserController.getUserById(getCurrentUser().user_id.toString()))
     navigate("/car/" + data.car_id)

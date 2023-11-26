@@ -4,9 +4,29 @@ import { PageLayout } from "../components/PageLayout";
 import { CreateUserDTO, UserController } from "../controller/api/UserController";
 import { setCurrentUser } from "../controller/session/session";
 
-async function onSubmit(values: CreateUserDTO, navigate: NavigateFunction) {
+async function onSubmit(values: any, navigate: NavigateFunction) {
     values.user_role = "CUSTOMER"
-    setCurrentUser(await UserController.createNewUser(values))
+    if (values.email_address == undefined ||
+        values.password == undefined ||
+        values.password2 == undefined ||
+        values.date_of_birth == undefined ||
+        values.last_name == undefined ||
+        values.first_name == undefined ||
+        values.phone_number == undefined
+    ) {
+        alert("Please fill all the fields!")
+        return
+    }
+    if (values.password != values.password2) {
+        alert("The passwords do not match!")
+        return
+    }
+    var data: any = await UserController.createNewUser(values)
+    if (data.error != undefined) {
+        alert(data.message)
+        return
+    }
+    setCurrentUser(data)
     navigate("/orders")
 }
 

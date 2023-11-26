@@ -18,9 +18,9 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/" Component={Homepage} />
+        <Route path="/login" Component={LoginPage} />
+        <Route path="/register" Component={RegistrationPage} />
         <Route path="/orders/" Component={FetchOrdersForUser} />
         <Route path="/order/:id" Component={FetchOrderData} />
         <Route path="/createOrder/" Component={CreateOrder} />
