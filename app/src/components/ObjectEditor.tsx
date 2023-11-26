@@ -6,7 +6,7 @@ import { InputForm } from "./InputForm"
 interface ObjectEditorInterface {
     title: string,
     parameters: ObjectEditorItemInterface[]
-    onChange: (obj: any) => boolean
+    onChange: (obj: any) => void
 }
 
 interface ObjectEditorItemInterface {
@@ -20,12 +20,12 @@ interface ObjectEditorItemInterface {
 }
 
 export function ObjectEditor(props: ObjectEditorInterface) {
-    const [editing, setEditing] = useState(true)
-    if (editing) {
+    const [editing, setEditing] = useState(false)
+    if (!editing) {
         return (
             <>
                 <h1 className="ObjectEditorTitle">{props.title}</h1>
-                <button className="ObjecEditorModifyButton" onClick={() => setEditing(false)}>Módosít</button>
+                <button className="ObjecEditorModifyButton" onClick={() => setEditing(true)}>Módosít</button>
                 {props.parameters.map((value => {
                     if (value.inputType == "textarea") {
                         return (
@@ -50,7 +50,7 @@ export function ObjectEditor(props: ObjectEditorInterface) {
     else {
         return (
             <>
-                <button className="ObjecEditorBackButton" onClick={() => setEditing(true)}>Vissza</button>
+                <button className="ObjecEditorBackButton" onClick={() => setEditing(false)}>Vissza</button>
                 <InputForm title={props.title} onSubmit={props.onChange} inputFormElements={props.parameters.filter((parameter) => parameter.isChangable).map((parameter) => {
                     return {
                         title: parameter.title,
