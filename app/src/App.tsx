@@ -12,7 +12,7 @@ import { OrderPage } from "./views/OrderPage";
 import { UserPage } from "./views/UserPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RegistrationPage } from "./views/RegistrationPage";
-import { CreateOrder, FetchOrderData, FetchOrdersForUser } from "./controller/fetchers/Fetchers";
+import { CreateOrder, FetchCarData, FetchCarsForUser, FetchOrderData, FetchOrdersForUser, CreateCar, EditUserData } from "./controller/fetchers/Fetchers";
 
 export const App = () => {
   return (
@@ -24,10 +24,10 @@ export const App = () => {
         <Route path="/orders/" Component={FetchOrdersForUser} />
         <Route path="/order/:id" Component={FetchOrderData} />
         <Route path="/createOrder/" Component={CreateOrder} />
-        <Route path="/cars/" element={<RegistrationPage />} />
-        <Route path="/car/:id" element={<RegistrationPage />} />
-        <Route path="/createCar/" element={<RegistrationPage />} />
-        <Route path="/user/" element={<RegistrationPage />} />
+        <Route path="/cars/" Component={FetchCarsForUser} />
+        <Route path="/car/:id" Component={FetchCarData} />
+        <Route path="/createCar/" Component={CreateCar} />
+        <Route path="/user/" Component={EditUserData} />
       </Routes>
     </BrowserRouter>
   )
