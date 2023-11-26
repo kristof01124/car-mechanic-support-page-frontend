@@ -1,10 +1,36 @@
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { CustomerPageLayout } from "../components/CustomerPageCompnents/CustomerPageLayout";
 import { InputForm } from "../components/InputForm";
+import { CreateOrderDTO, GetOrderDTO, OrderController } from "../controller/api/OrderController";
+import { FeedbackController } from "../controller/api/FeedbackController";
+import { positionDropdownItems, severityDropdownItems } from "../controller/enums";
+import { getCurrentUser } from "../controller/session/session";
 interface NewOrderInterface {
     userID: number
 }
 
+interface OrderData {
+    carId: string,
+    severity: string,
+    placeOfProblem: string,
+    description: string
+}
+
+async function onSubmit(data: OrderData, navigate: NavigateFunction) {
+    var order = await OrderController.createNewOrder(data.carId, {
+        severity: data.severity,
+        approximate_position: data.placeOfProblem,
+        description: data.description
+    })
+    if (order.error != undefined) {
+        alert(order.message)
+        return
+    }
+    navigate("/order/" + order.order_id)
+}
+
 export function NewOrderPage() {
+    var navigate = useNavigate()
     return (
         <CustomerPageLayout>
             <InputForm title="Új rendelés" inputFormElements={
@@ -12,17 +38,25 @@ export function NewOrderPage() {
                     {
                         title: "Autó",
                         inputType: "dropdown",
-                        id: "carId"
+                        id: "carId",
+                        dropDownElements: getCurrentUser().ownedCars.map((car) => {
+                            return {
+                                id: car.car_id.toString(),
+                                title: car.license_plate
+                            }
+                        })
                     },
                     {
                         title: "Probléma fontossága",
                         inputType: "dropdown",
-                        id: "severity"
+                        id: "severity",
+                        dropDownElements: severityDropdownItems
                     },
                     {
                         title: "Probléma nagyjábóli helye",
                         inputType: "dropdown",
-                        id: "placeOfProblem"
+                        id: "placeOfProblem",
+                        dropDownElements: positionDropdownItems
                     },
                     {
                         title: "Leírás",
@@ -30,10 +64,7 @@ export function NewOrderPage() {
                         id: "description"
                     }
                 ]
-            } onSubmit={(values) => alert(JSON.stringify(values))}>
-                {
-                    // API_CALLL: Create new order for a given userID
-                }
+            } onSubmit={(values) => onSubmit(values as OrderData, navigate)}>
             </InputForm>
         </CustomerPageLayout>
     )

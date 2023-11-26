@@ -1,5 +1,8 @@
+import { NavigateFunction, useNavigate } from "react-router-dom"
 import { CustomerPageLayout } from "../components/CustomerPageCompnents/CustomerPageLayout"
 import { ObjectEditor } from "../components/ObjectEditor"
+import { PatchUserDTO, UserController } from "../controller/api/UserController"
+import { getCurrentUser, setCurrentUser } from "../controller/session/session"
 
 interface UserData {
     password: string,
@@ -14,12 +17,19 @@ interface UserPageInterface {
     userData: UserData
 }
 
+async function onChange(value: PatchUserDTO, navigate: NavigateFunction) {
+    await UserController.modifyUser(getCurrentUser().user_id.toString(), value)
+    setCurrentUser(await UserController.getUserById(getCurrentUser().user_id.toString()))
+    window.location.reload();
+}
+
 export function UserPage(props: UserPageInterface) {
+    var navigate = useNavigate()
     return (
         <CustomerPageLayout>
-            <ObjectEditor title="Felhasználó adatainak szerkesztése" onChange={(obj: any) => { alert(JSON.stringify(obj)); return true }} parameters={[
+            <ObjectEditor title="Felhasználó adatainak szerkesztése" onChange={(value: PatchUserDTO) => onChange(value, navigate)} parameters={[
                 {
-                    id: "email",
+                    id: "email_address",
                     title: "E-mail cím",
                     inputType: "text",
                     isChangable: false,
