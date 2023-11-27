@@ -29,7 +29,7 @@ export function NewCarPage(props: NewCarInterface) {
     var navigate = useNavigate()
     return (
         <CustomerPageLayout>
-            <InputForm title="Új autó hozáadása" inputFormElements={
+            <InputForm submitButtonText="Hozzáad" title="Új autó hozáadása" inputFormElements={
                 [
                     {
                         title: "Márka",

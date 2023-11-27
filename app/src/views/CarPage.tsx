@@ -15,11 +15,11 @@ interface CarData {
     serialNumber: string
 }
 
-async function onChange(value: CarData, carId: string) {
+async function onChange(value: any, carId: string) {
     await CarController.modifyCar(carId, {
         brand: value.brand,
-        serial_number: value.serialNumber,
-        license_plate: value.licensePlate,
+        serial_number: value.serial_number,
+        license_plate: value.license_plate,
         type: value.type
     })
     window.location.reload();

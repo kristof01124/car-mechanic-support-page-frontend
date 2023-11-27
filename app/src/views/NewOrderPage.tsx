@@ -35,7 +35,7 @@ export function NewOrderPage() {
     var navigate = useNavigate()
     return (
         <CustomerPageLayout>
-            <InputForm title="Új rendelés" inputFormElements={
+            <InputForm submitButtonText="Hozzáad" title="Új rendelés" inputFormElements={
                 [
                     {
                         title: "Autó",

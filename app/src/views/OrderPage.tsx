@@ -48,7 +48,7 @@ async function onChange(value: OrderInputFormData, orderId: string, feedbackId: 
         start_time: value.start_time,
         end_time: value.end_time,
         comment: value.comment,
-        is_successful: value.is_successfull.toString() == "SUCCES" ? true : false
+        is_successful: value.is_successfull == "SUCCES" ? true : false
     })
     window.location.reload()
 }
@@ -74,7 +74,7 @@ export function OrderPage(props: OrderPageInterface) {
                 }, {
                     id: "description",
                     title: "Leírás",
-                    inputType: "text",
+                    inputType: "textarea",
                     isChangable: true,
                     value: props.orderData.description
                 }, {

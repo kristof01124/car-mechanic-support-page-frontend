@@ -1,3 +1,5 @@
+import Button from "react-bootstrap/esm/Button"
+
 interface ItemListInterface {
     onClick: (id: string) => void,
     IDs: string[]
@@ -9,7 +11,7 @@ export function ItemList(props: React.PropsWithChildren<ItemListInterface>) {
             {
                 props.IDs.map(
                     (id: string) => (
-                        <button onClick={() => props.onClick(id)}>{id}</button>
+                        <Button className="itemListItemButton" variant="secondary" onClick={() => props.onClick(id)}>{id}</Button>
                     )
                 )
             }

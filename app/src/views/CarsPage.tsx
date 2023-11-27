@@ -2,6 +2,7 @@ import { NavigateFunction, useNavigate } from "react-router-dom"
 import { CustomerPageLayout } from "../components/CustomerPageCompnents/CustomerPageLayout"
 import { ItemList } from "../components/ItemList"
 import { CarController } from "../controller/api/CarController"
+import { Button } from "react-bootstrap"
 
 interface CarsPageInterface {
     licensePlates: string[]
@@ -15,8 +16,10 @@ export function CarsPage(props: CarsPageInterface) {
     var navigate = useNavigate()
     return (
         <CustomerPageLayout>
+
+            <h1>Autók</h1>
             <ItemList IDs={props.licensePlates} onClick={(id) => onclick(id, navigate)} />
-            <button onClick={() => navigate("/createCar")}>Új autó hozzáadása</button>
+            <Button className="carsButton" size="lg" onClick={() => navigate("/createCar")}>Új autó hozzáadása</Button>
         </CustomerPageLayout>
     )
 }

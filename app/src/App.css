@@ -1,23 +1,118 @@
-.styledButton {
-    width: fit-content;
-    align-self: center;
-    padding: 0.5em 1em 0.5em 1em;
-    border-radius: 1em;
-    background-color: blue;
-    border: 0;
-    color: white;
-    box-shadow: 0 0.4em #999;
+.itemListItemButton {
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 0.1em;
 }
 
-.styledButton.xxl {
+.ObjectEditorItemBody {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: space-between;
+    background-color: wheat;
+    margin-bottom: 0.2em;
+    padding: 0.25em;
+    border-radius: 0.4em;
     font-size: x-large;
 }
 
-.styledButton:hover {
-    background-color: rgb(0, 68, 255);
+.LargeObjectEditorItemBody {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: wheat;
+    margin-bottom: 0.2em;
+    padding: 0.25em;
+    border-radius: 0.4em;
+    font-size: x-large;
 }
 
-.styledButton:active {
-    box-shadow: 0 0.2em #666;
-    transform: translateY(4px);
+.LargeObjectEditorLargeItemTitle,
+.LargeObjectEditorLargeItemValue {
+    align-self: self-start;
+}
+
+.carsButton {
+    width: 16%;
+    margin-left: 42%;
+}
+
+.ObjectEditorItemTitle {
+    display: flex;
+}
+
+.ObjectEditorItemValue {
+    display: flex;
+}
+
+.ObjecEditorButton {
+    margin-top: 0.25em
+}
+
+.ObjecEditorModifyButton {
+    margin: 1em;
+}
+
+.ObjecEditorButton {
+    width: 16%;
+    margin-left: 42%;
+}
+
+.input_form_label {
+    font-size: x-large;
+    margin-top: 0.3em;
+    margin-bottom: 0.2em;
+}
+
+.input_form_body {
+    width: 100%;
+}
+
+.input_form_input,
+.input_form_textarea {
+    width: 75%;
+    font-size: medium;
+}
+
+.input_form_submit_button {
+    margin-top: 1em;
+    width: 16%;
+    margin-left: 42%;
+}
+
+.homepageButton {
+    width: 16%;
+    margin-left: 42%
+}
+
+.btn-primary {
+    background-color: sienna;
+    border: sienna;
+}
+
+.btn-primary:hover {
+    background-color: rgb(183, 94, 53);
+}
+
+.btn-primary:active {
+    --bs-btn-active-bg: sienna;
+    --bs-btn-active-border-color: sienna;
+    --bs-btn-active-color: #44475a;
+}
+
+.btn-secondary {
+    background-color: rgb(101, 60, 42);
+    border: sienna;
+}
+
+.btn-secondary:hover {
+    background-color: rgb(102, 51, 27);
+}
+
+.btn-secondary:active {
+    --bs-btn-active-bg: sienna;
+    --bs-btn-active-border-color: sienna;
+    --bs-btn-active-color: #44475a;
 }

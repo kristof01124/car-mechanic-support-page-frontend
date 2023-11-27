@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap"
 import "./NavigationBar.css"
 
 interface NavigationBarElementInterface {
@@ -16,9 +17,9 @@ export function NavigationBar(props: NavigationBarInterface) {
             {
                 props.elements.map(
                     (value) => (
-                        <button onClick={() => value.onPressed(value.id)}>
+                        <Button className="primaryButton" onClick={() => value.onPressed(value.id)}>
                             {value.title}
-                        </button>
+                        </Button>
                     )
                 )
             }

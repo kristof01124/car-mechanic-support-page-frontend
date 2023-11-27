@@ -26,7 +26,7 @@ export function LoginPage() {
     var navigate = useNavigate()
     return (
         <PageLayout title={"Egy átlagos autószerelő-műhely átlagos weboldala"}>
-            <InputForm title="Bejelentkezés" onSubmit={(value) => onSubmit(value, navigate)} inputFormElements={
+            <InputForm title="Bejelentkezés" submitButtonText="Belépés" onSubmit={(value) => onSubmit(value, navigate)} inputFormElements={
                 [
                     {
                         title: "E-mail cím",

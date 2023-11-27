@@ -34,7 +34,7 @@ export function RegistrationPage() {
     var navigate = useNavigate()
     return (
         <PageLayout title={"Egy átlagos autószerelő-műhely átlagos weboldala"}>
-            <InputForm title="Regisztráció" onSubmit={(values) => onSubmit(values as CreateUserDTO, navigate)} inputFormElements={
+            <InputForm submitButtonText="Regisztrálj" title="Regisztráció" onSubmit={(values) => onSubmit(values as CreateUserDTO, navigate)} inputFormElements={
                 [
                     {
                         title: "E-mail cím",

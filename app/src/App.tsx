@@ -1,5 +1,4 @@
 import { PageLayout } from "./components/PageLayout";
-import './App.css'
 import { InputForm } from "./components/InputForm";
 import { Title } from "@mantine/core";
 import { LoginPage } from "./views/LoginPage";
@@ -13,6 +12,8 @@ import { UserPage } from "./views/UserPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RegistrationPage } from "./views/RegistrationPage";
 import { CreateOrder, FetchCarData, FetchCarsForUser, FetchOrderData, FetchOrdersForUser, CreateCar, EditUserData } from "./controller/fetchers/Fetchers";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 
 export const App = () => {
   return (

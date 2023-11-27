@@ -7,7 +7,7 @@ export const severityDropdownItems: MyDropdownButtonElementInterface[] = [
     },
     {
         id: "MEDIUM",
-        title: "Kozepes"
+        title: "Közepes"
     },
     {
         id: "LOW",
@@ -18,15 +18,15 @@ export const severityDropdownItems: MyDropdownButtonElementInterface[] = [
 export const positionDropdownItems: MyDropdownButtonElementInterface[] = [
     {
         id: "FRONT",
-        title: "Elol"
+        title: "Elől"
     },
     {
         id: "MIDDLE",
-        title: "Kozepen"
+        title: "Középen"
     },
     {
         id: "REAR",
-        title: "Hatul"
+        title: "Hátul"
     }
 ]
 
